@@ -145,10 +145,12 @@ function! s:create_window() abort
             \ 'bufpos': [line("."), 0],
             \ 'row': -1,
             \ 'col': 0,
+            \ 'border': 'single',
             \ 'style': 'minimal'
             \ }
       let s:last_popup_window = nvim_open_win(s:last_popup_bufid, 0, opts)
       call nvim_set_current_win(s:last_popup_window)
+      setl number
       noremap <buffer> <silent> q :bw!<CR>
       call nvim_buf_set_lines(s:last_popup_bufid, 0, -1, v:true, s:result)
     else
